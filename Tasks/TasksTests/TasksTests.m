@@ -8,7 +8,8 @@
 
 #import <XCTest/XCTest.h>
 //#import "../Tasks/Model/LSITask.h"  // #import bug? may need relative path to a Model group
-//#import "LSITask.h"
+#import "LSITask.h"
+#import "NSString+LSIRepeatString.h"
 
 @interface TasksTests : XCTestCase
 
@@ -22,14 +23,21 @@
 // 3. If you use a framework like MapKit, you may need to add the framework to your main target
 
 - (void)testCode {
-	printf("Use an Objective-C unit test like a Playground scratch pad");
-	
-	// Create a task model object
-	// LSITask *task = [[LSITask alloc] init];
-	
-	// Try creating other objects or calling methods to verify you understand
-	// Objective-C code.
-
+    printf("Use an Objective-C unit test like a Playground scratch pad\n\n");
+    // Create a task model object
+    LSITask *task = [[LSITask alloc] initWithName:@"Walk the Dog" date:[NSDate now] note:@"Row needs to get outside"];
+    NSLog(@"Created a new task: %@", task);
+    
+//    task.identifier not available outside of the class
+    
+    //task = nil; // ARC will clean up the memory and run dealloc
+    // Try creating other objects or calling methods to verify you understand
+    // Objective-C code.
+    
+    
+    NSString *phone = @"iPhone";
+    NSLog(@"Jake: %@", [phone lsi_repeatString]);
+    
 }
 
 @end
