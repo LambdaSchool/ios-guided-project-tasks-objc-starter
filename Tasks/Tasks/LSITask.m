@@ -22,6 +22,8 @@
 
 @implementation LSITask
 
+// both private and public implementations
+
 - (instancetype)initWithName:(NSString *)name
                         date:(NSDate *)date
                         note:(NSString *)note {

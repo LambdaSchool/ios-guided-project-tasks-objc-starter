@@ -7,6 +7,8 @@
 //
 
 #import "LSITasksTableViewController.h"
+#import "LSITaskController.h"
+#import "LSITask.h"
 
 @interface LSITasksTableViewController ()
 
@@ -16,20 +18,32 @@
 
 @implementation LSITasksTableViewController
 
-// TODO: Implement a initFromCoder method
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        _taskController = [[LSITaskController alloc] init];
+    }
+    return self;
+}
 
 // MARK: - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	// TODO: Return the number of tasks from the controller
-	return 0;
+	return self.taskController.tasks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	// TODO: Create a table view cell with the Task name and formatted date
-    return [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
+    
+    LSITask *task = self.taskController.tasks[indexPath.row];
+    
+    cell.textLabel.text = task.name;
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate: task.date];
+    
+    return cell;
 }
 
 // MARK: - Navigation

@@ -10,9 +10,13 @@
 
 @interface LSITask : NSObject
 
+// public properties
+
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic)NSDate *date;
 @property (nonatomic, copy)NSString *note;
+
+// public methods
 
 - (instancetype)initWithName:(NSString *)name
                         date:(NSDate *)date

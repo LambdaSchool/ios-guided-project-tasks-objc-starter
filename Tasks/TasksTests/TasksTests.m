@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 //#import "../Tasks/Model/LSITask.h"  // #import bug? may need relative path to a Model group
 #import "LSITask.h"
+#import "NSString+LSIRepeatString.h"
 
 @interface TasksTests : XCTestCase
 
@@ -32,6 +33,11 @@
     //task = nil; // ARC will clean up the memory and run dealloc
     // Try creating other objects or calling methods to verify you understand
     // Objective-C code.
+    
+    
+    NSString *phone = @"iPhone";
+    NSLog(@"Jake: %@", [phone lsi_repeatString]);
+    
 }
 
 @end
