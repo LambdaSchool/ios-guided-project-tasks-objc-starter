@@ -7,7 +7,21 @@
 //
 
 #import "LSITask.h"
+
+@interface LSITask () {
+    // private instance variables
+    NSString *_name;
+    int identifier;
+}
+
+// private properties
+
+// private methods
+
+@end
+
 @implementation LSITask
+
 - (instancetype)initWithName:(NSString *)name
                         date:(NSDate *)date
                         note:(NSString *)note {
@@ -15,7 +29,9 @@
         _name = name;
         _date = date;
         _note = note;
+        identifier = 42;
         NSLog(@"Task.init %@", name);
+        
         /* String Tokens in NSLog() and printf()
          %@ = object and only works in NSLog()
          %p = pointer 0x2349EF
@@ -35,9 +51,16 @@
 // 1. instance variable
 // 2. setter
 // 3. getter
-//- (void)setName:(NSString *)name {
-//    _name = name;
+- (void)setName:(NSString *)name {
+    // willSet{}
+    _name = name;
 //    saveToFirebase(); // side-effect
-//}
+    
+    // didSet{}
+}
+
+- (NSString *)name {
+    return _name;
+}
 
 @end
